@@ -22,5 +22,7 @@ lazy val root = (project in file("."))
   libraryDependencies ++= Seq(
     "org.typelevel" %% "cats" % "0.6.0",
     "com.typesafe.slick" %% "slick" % "3.1.1",
-    compilerPlugin("org.spire-math" %% "kind-projector" % "0.7.1")))
+    compilerPlugin("org.spire-math" %% "kind-projector" % "0.7.1"),
+    "org.scalatest" %% "scalatest" % "2.2.6" % "test",
+    "com.h2database" % "h2" % "1.4.192" % "test"))
 

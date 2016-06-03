@@ -5,6 +5,10 @@
 
 Main goal is to be able to effectively use [DBIOAction](http://slick.lightbend.com/doc/3.1.1/api/#package) with monad transformers such as [OptionT](http://typelevel.org/cats/tut/optiont.html).
 
+### Examples
+
+See the tests for how to use DBIO along with cats constructs.
+
 ### License
 
    Copyright 2016 Rui Batista

@@ -1,5 +1,6 @@
 # DBIO-Cats
 
+<a href='https://bintray.com/batista/maven/dbio-cats/view?source=watch' alt='Get automatic notifications about new "dbio-cats" versions'><img src='https://www.bintray.com/docs/images/bintray_badge_color.png'></a>
 
 [Cats](https://github.com/typelevel/cats) instances to use with [Slick](http://slick.lightbend.com)
 

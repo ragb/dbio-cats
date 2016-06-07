@@ -1,2 +1,4 @@
 /.ensime
 target
+/.cache-main
+/.classpath

@@ -5,7 +5,6 @@ import slick.dbio._
 import scala.concurrent.ExecutionContext
 import scala.util.{ Success, Failure }
 
-
 trait DBIOInstances {
   implicit def dbioMonadError(implicit ec: ExecutionContext) = new MonadError[DBIO, Throwable] with CoflatMap[DBIO] {
     override def pure[A](a: A) = DBIO.successful(a)

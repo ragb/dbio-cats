@@ -1,15 +1,13 @@
 package com.ruiandrebatista.dbiocats
-import org.scalatest._
+
+import scala.concurrent.ExecutionContext.Implicits._
+
 import cats.data._
-import cats._
-import cats.std.option._
 import cats.syntax.option._
 import dbio._
-import slick.driver.H2Driver
-import H2Driver.api._
-import scala.concurrent._
-import scala.concurrent.ExecutionContext.Implicits._
+import org.scalatest._
 import org.scalatest.concurrent.ScalaFutures
+import slick.driver.H2Driver.api._
 
 class OptionTTestSpec extends FlatSpec with DatabaseSupport with ScalaFutures with Matchers {
   def optiont(email: String) = for {
@@ -24,11 +22,13 @@ class OptionTTestSpec extends FlatSpec with DatabaseSupport with ScalaFutures wi
   }
 
   it should "Allow lifting of dbio actions to OptionT" in {
-    val ot = for {
-      userId <- optiont("rui.batista@example.com")
+    def ot(email: String) = for {
+      userId <- optiont(email)
       c <- OptionT.liftF[DBIO, Int](events.filter(_.userId === userId).length.result)
     } yield (c)
-    val action = ot.value
-    database.run(action).futureValue shouldBe 1.some
+    val action1 = ot("rui.batista@example.com").value
+    database.run(action1).futureValue shouldBe 1.some
+    val action2 = ot("godiva@example.com").value
+    database.run(action2).futureValue shouldBe 0.some
   }
 }

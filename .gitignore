@@ -2,3 +2,7 @@
 target
 /.cache-main
 /.classpath
+/.project
+bin/
+/.ensime_cache/
+/.cache-tests

@@ -4,7 +4,7 @@ import cats._, cats.data._
 import cats.syntax.xor._
 import slick.dbio._
 import scala.concurrent.ExecutionContext
-import scala.util.{Success, Failure}
+import scala.util.{ Success, Failure }
 import scala.util.control.NonFatal
 
 trait DBIOInstances extends DBIOInstances1 {
@@ -26,14 +26,14 @@ trait DBIOInstances extends DBIOInstances1 {
 }
 
 private[dbiocats] trait DBIOInstances1 extends DBIOInstances2 {
-  implicit def dbioMonoid[A](implicit ma: Monoid[A], executionContext: ExecutionContext) = new DBIOSemiGroup[A] with Monoid[DBIO[A]] {
+  implicit def dbioMonoid[A](implicit ma: Monoid[A], executionContext: ExecutionContext): Monoid[DBIO[A]] = new DBIOSemiGroup[A] with Monoid[DBIO[A]] {
     override val semigroup = ma
     override val empty = DBIO.successful(ma.empty)
   }
 }
 
 private[dbiocats] trait DBIOInstances2 {
-  implicit def dbioSemigroup[A](implicit sa: Semigroup[A], executionContext: ExecutionContext) = new DBIOSemiGroup[A] {
+  implicit def dbioSemigroup[A](implicit sa: Semigroup[A], executionContext: ExecutionContext): Semigroup[DBIO[A]] = new DBIOSemiGroup[A] {
     override val semigroup = sa
   }
 }

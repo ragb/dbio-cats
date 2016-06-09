@@ -7,3 +7,4 @@ bin/
 /.ensime_cache/
 /.cache-tests
 .settings
+*~

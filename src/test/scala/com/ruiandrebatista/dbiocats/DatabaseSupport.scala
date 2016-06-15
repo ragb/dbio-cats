@@ -13,9 +13,11 @@ trait DatabaseSupport extends TestTables with BeforeAndAfter {
       schema.create,
       users ++= Seq(
         UserRow(1, "rui", "rui.batista@example.com"),
-        UserRow(2, "godiva", "godiva@example.com")
+        UserRow(2, "godiva", "godiva@example.com"),
+        UserRow(3, "pedro", "pedro@example.com")
       ),
-      events.map(_.forInsert) += (1, "loggedin", System.currentTimeMillis())
+      events.map(_.forInsert) += (1, "loggedin", System.currentTimeMillis()),
+      events.map(_.forInsert) ++= (1 to 10) map { i => (3l, "event" + i, System.currentTimeMillis()) }
     ).transactionally
     Await.result(database.run(action), 5 seconds)
   }

@@ -14,7 +14,8 @@ val baseSettings = Seq(
     "-language:postfixOps",
     "-Xmax-classfile-name", "255" //due to pickling macros
   ),
-licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")))
+  licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")),
+parallelExecution in Test := false)
 
 lazy val root = (project in file("."))
   .settings(baseSettings:_*)

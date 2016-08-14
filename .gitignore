@@ -8,3 +8,5 @@ bin/
 /.cache-tests
 .settings
 *~
+
+src/main/scala/com/ruiandrebatista/dbiocats/*ENSIME-Compilation-Result*

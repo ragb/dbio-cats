@@ -6,7 +6,7 @@ import dbio._
 import scala.concurrent.ExecutionContext.Implicits._
 import slick.driver.H2Driver.api._
 import cats.data.WriterT
-import cats.std.all._
+import cats.instances.all._
 
 class WritertSpec extends FlatSpec with DatabaseSupport with Matchers with ScalaFutures {
   "DBIO instances" should "Work with writer t" in {

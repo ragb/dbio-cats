@@ -11,6 +11,7 @@ trait DBIOInstances extends DBIOInstances1 {
   implicit def dbioMonadError(implicit ec: ExecutionContext) = new MonadError[DBIO, Throwable] with CoflatMap[DBIO] {
     override def pure[A](a: A) = DBIO.successful(a)
     override def flatMap[A, B](fa: DBIO[A])(f: A => DBIO[B]) = fa.flatMap(f)
+    override def tailRecM[A, B](a: A)(f: A => DBIO[Either[A, B]]) = defaultTailRecM(a)(f)
     override def coflatMap[A, B](fa: DBIO[A])(f: DBIO[A] => B): DBIO[B] = DBIO.successful(f(fa))
     override def handleErrorWith[A](fa: DBIO[A])(h: Throwable => DBIO[A]) = fa.asTry flatMap {
       case Success(a) => DBIO.successful(a)

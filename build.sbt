@@ -20,7 +20,7 @@ lazy val root = (project in file("."))
   .settings(baseSettings:_*)
   .settings(name := "dbio-cats",
   libraryDependencies ++= Seq(
-    "org.typelevel" %% "cats" % "0.6.0",
+    "org.typelevel" %% "cats" % "0.7.2",
     "com.typesafe.slick" %% "slick" % "3.1.1",
     compilerPlugin("org.spire-math" %% "kind-projector" % "0.7.1"),
     "org.scalatest" %% "scalatest" % "2.2.6" % "test",

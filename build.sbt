@@ -1,7 +1,6 @@
 
 val baseSettings = Seq(
   organization := "com.ruiandrebatista",
-  version := "0.2.SNAPSHOT",
   scalaVersion := "2.11.8",
   scalacOptions in Compile ++= Seq(
     "-encoding", "UTF-8",
